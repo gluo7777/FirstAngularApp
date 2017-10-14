@@ -1,0 +1,26 @@
+<div>
+  <!-- Using events -->
+  <h3>User inputs as $event</h3>
+  <input (keyup)="onKeyPressed($event)">
+  <p>Keys pressed: {{keys}}</p>
+  <p>Values: {{values}}</p>
+  <!-- Using template reference -->
+  <!-- The template below is independent of the component -->
+  <h3>User inputs with template references</h3>
+  <input #box (keyup)="0"> <!-- Bind to 0, shortest template statement, so angular will update bindings -->
+  <p>{{box.value}}</p>
+  <!-- The template below is dependent of the component -->
+  <h3>User inputs with template references</h3>
+  <input #box2 (keyup)="onKeyPressed2(box2.value)">
+  <p>Values: {{values2}}</p>
+  <!-- Listen to enter only with pseudo-event -->
+  <h3>Press enter to update value or click outside box</h3>
+  <input #box3
+    (keyup.enter)="onEnterPressed(box3.value)"
+    (blur)="onEnterPressed(box3.value)"
+  >
+  <p>{{enteredValue}}</p>
+  <ul>
+    <li *ngFor="let entered of enteredValues">Entered {{entered}}</li>
+  </ul>
+</div>

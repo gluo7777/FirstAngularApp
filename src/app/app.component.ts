@@ -1,8 +1,4 @@
-import { Component,Input } from '@angular/core';
-import {Villan} from './villan';
-import {Hero} from './hero';
-import {VillanDetailComponent} from './villan-detail.component';
-import {ObjDisplayComponent} from "./obj-display.component";
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -12,27 +8,5 @@ import {ObjDisplayComponent} from "./obj-display.component";
 
 // equivalent to main class
 export class AppComponent {
-  title = 'Browse Heroes';
-  villans = VILLANS; // typescript infers type to be of Villan[]
-  selectedVillan: Villan;
-  onSelect(villan:Villan):void {
-    this.selectedVillan = villan;
-  };
-  selectedHero: Hero = {
-    name:"",
-    action:""
-  };
+  title = 'Main application';
 }
-
-const VILLANS: Villan[] = [
-  { id: 1, name: 'Mr. Nice' },
-  { id: 2, name: 'Narco' },
-  { id: 3, name: 'Bombasto' },
-  { id: 4, name: 'Celeritas' },
-  { id: 5, name: 'Magneta' },
-  { id: 6, name: 'RubberMan' },
-  { id: 7, name: 'Dynama' },
-  { id: 8, name: 'Dr IQ' },
-  { id: 9, name: 'Magma' },
-  { id: 10, name: 'Tornado' }
-];

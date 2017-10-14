@@ -1,34 +1,16 @@
 <!-- uses interpolation/one-way data-binding -->
 <h1>{{title}}</h1>
 
-<!-- Testing -->
-<obj-display></obj-display>
+<!-- Forms -->
+<animal-form></animal-form>
+
+<!-- user inputs -->
+<user-input></user-input>
 
 <!-- hero input/detail -->
-<hero-ui [hero]="selectedHero"></hero-ui>
-<div>
-  <label>name: </label>
-  <!-- note: ngModel requires FormsModule -->
-  <input [(ngModel)]="selectedHero.name" placeholder="RandomHero">
-</div>
-<div>
-  <label>action: </label>
-  <input [(ngModel)]="selectedHero.action" placeholder="RandomAction">
-</div>
 
-<p>{{selectedHero.name}}</p>
-
-<!-- Villans Master/detail-->
-
+<!-- Villans Master/detail. -->
 <!-- display selected villan -->
 <villan-detail [villan]="selectedVillan"></villan-detail>
-
-<!-- select a villan -->
-<h1>List of villans: </h1>
-<ol class="villans">
-  <!-- the * indicates that the <li> element and children constitute a master template -->
-  <!-- applies selected class to li based on eval value -->
-  <li *ngFor="let villan of villans" [class.selected]="villan === selectedVillan" (click)="onSelect(villan)">
-    <span class="badge">{{villan.id}}</span> {{villan.name}}
-  </li>
-</ol>
+<!-- display list of villans -->
+<villan-master></villan-master>
