@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component,Input } from '@angular/core';
+import {Villan} from './villan';
+import {VillanDetailComponent} from './villan-detail.component';
 
 @Component({
   selector: 'app-root',
@@ -7,6 +9,9 @@ import { Component } from '@angular/core';
   template: `
   <!-- uses interpolation/one-way data-binding -->
   <h1>{{title}}</h1>
+
+  <!-- test -->
+  <p>test name: {{obj.name}}</p>
 
   <!-- hero -->
   <div>
@@ -26,13 +31,23 @@ import { Component } from '@angular/core';
   <div><label>action :</label>{{hero.action}}</div>
 
   <!-- Villans -->
+  <!-- Master/detail pane architecture -->
+
+  <!-- display selected villan -->
+  <villan-detail [villan]="selectedVillan"></villan-detail>
+
+  <!-- select a villan -->
   <h1>List of villans: </h1>
   <ol class="villans">
     <!-- the * indicates that the <li> element and children constitute a master template -->
-    <li *ngFor="let villan of villans">
+    <!-- applies selected class to li based on eval value -->
+    <li *ngFor="let villan of villans"
+        [class.selected]="villan === selectedVillan"
+        (click)="onSelect(villan)">
       <span class="badge">{{villan.id}}</span> {{villan.name}}
     </li>
   </ol>
+
   `,
   styles: [`
   .selected {
@@ -85,6 +100,7 @@ import { Component } from '@angular/core';
 `]
 })
 
+// equivalent to main class
 export class AppComponent {
   title = 'Browse Heroes';
   hero: Hero = {
@@ -99,6 +115,11 @@ export class AppComponent {
     return this.hero.name + " " + this.hero.action + " !";
   };
   villans = VILLANS; // typescript infers type to be of Villan[]
+  selectedVillan: Villan;
+  onSelect(villan:Villan):void {
+    this.selectedVillan = villan;
+  };
+  obj: Obj1 = new Obj1("William");
 }
 
 export class Hero {
@@ -107,9 +128,11 @@ export class Hero {
   action: string;
 }
 
-export class Villan {
-  id: number;
-  name: string;
+export class Obj1{
+  name:string;
+  constructor(name:string){
+    this.name = name;
+  };
 }
 
 const VILLANS: Villan[] = [
