@@ -1,0 +1,26 @@
+module
+- GLOBAL place to create,register, retrieve angjs modules
+
+app.component:
+ts: component
+html: view template
+css: styling
+spec.ts: unit tests
+
+app.moudle.ts: assembly
+
+Adding dependencies to main html:
+- no need to edit index.html
+- angular CLI automatically adds scripts
+
+main.ts : boostraps app
+
+polyfill.ts : normalize different support across platforms, check out browser support guide
+
+styling:
+-global styling go in main styls.css
+
+testing:
+-ng Test
+-ng e2e
+-ng lint

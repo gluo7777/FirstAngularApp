@@ -13,10 +13,10 @@
  *
  * Learn more in https://angular.io/docs/ts/latest/guide/browser-support.html
  */
-
 /***************************************************************************************************
- * BROWSER POLYFILLS
- */
+
+* BROWSER POLYFILLS
+*/
 
 /** IE9, IE10 and IE11 requires all of the following polyfills. **/
 // import 'core-js/es6/symbol';
